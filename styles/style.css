@@ -1,0 +1,21 @@
+html, body {
+    height: 90%;
+    width: 90%;
+    text-align: center;
+    padding: 50px;
+}
+#field {
+    background: lightblue;
+    border: 1px solid black;
+}
+
+#field, .start-btn {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px;
+}
+
+.hidden-btn {
+    visibility: hidden;
+}
+
