@@ -72,8 +72,6 @@ var drawModule = (function() {
         clearAll();
         cellDraw(food, foodCoord.x, foodCoord.y);
         snakeDraw(snake);
-        head.x = snake[0].x;
-        head.y = snake[0].y;
 
         switch(direction) {
             case left:
@@ -91,27 +89,23 @@ var drawModule = (function() {
         }
 
 
-        if ((head.x === foodCoord.x) && (head.y === foodCoord.y)) {
-            tail = {
-                x: head.x,
-                y: head.y
-            };
+        if ((head.x === foodCoord.x) && (head.y === foodCoord.y)) {            
             cellDraw(food);
         }
         else {
-            tail = snake.pop();
-            tail.x = head.x;
-            tail.y = head.y;
+            snake.pop();            
         }
+        tail = {
+                x: head.x,
+                y: head.y
+            };
         snake.unshift(tail);
 
 
-        console.log(snake);
         head.x = snake[0].x;
         head.y = snake[0].y;
-        snakeDraw(snake);
 
-        if ((head.x < 0)|| (head.x > 39) || (head.y < 0) || (head.y > 29) || (!checkCoordinates(snake[0].x, snake[0].y, true))) {
+        if ((head.x < 0)|| (head.x > 39) || (head.y < 0) || (head.y > 29) || (!checkCoordinates(head.x, head.y, true))) {
             console.log(head.x, head.y);
             loop = clearInterval(loop);
             startButton.classList.remove('hidden-btn');
@@ -128,7 +122,6 @@ var drawModule = (function() {
         clearAll();
         snake = [
             {x: 0, y: 0},
-            {x: 1, y: 0},
         ];
         head = {
             x: 0,
@@ -137,8 +130,6 @@ var drawModule = (function() {
 
         direction = right;
         foodCoord = {};
-        cellDraw(food, foodCoord.x, foodCoord.y);
-        snakeDraw(snake);
 
         loop = setInterval(draw, 100);
     };
