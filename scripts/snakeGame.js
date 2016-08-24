@@ -10,7 +10,6 @@
 
     document.onkeydown = function(event) {
         code = event.keyCode;
-        console.log('handler');
         switch (code) {
             case 37:
                 if (direction != right) {

@@ -89,11 +89,11 @@ var drawModule = (function() {
         }
 
 
-        if ((head.x === foodCoord.x) && (head.y === foodCoord.y)) {            
+        if ((head.x === foodCoord.x) && (head.y === foodCoord.y)) {
             cellDraw(food);
         }
         else {
-            snake.pop();            
+            snake.pop();
         }
         tail = {
                 x: head.x,
@@ -106,7 +106,6 @@ var drawModule = (function() {
         head.y = snake[0].y;
 
         if ((head.x < 0)|| (head.x > 39) || (head.y < 0) || (head.y > 29) || (!checkCoordinates(head.x, head.y, true))) {
-            console.log(head.x, head.y);
             loop = clearInterval(loop);
             startButton.classList.remove('hidden-btn');
         }
@@ -122,6 +121,7 @@ var drawModule = (function() {
         clearAll();
         snake = [
             {x: 0, y: 0},
+            {x: 1, y: 0},
         ];
         head = {
             x: 0,
@@ -131,7 +131,7 @@ var drawModule = (function() {
         direction = right;
         foodCoord = {};
 
-        loop = setInterval(draw, 100);
+        loop = setInterval(draw, 50);
     };
 
 
