@@ -4,8 +4,10 @@ var drawModule = (function() {
     var food = true,
         body = false,
         fieldWidth = 640,
-        fieldHeigth = 480,
+        fieldHeight = 480,
         cellSide = 16,
+        width = 40,
+        height = 30,
         field = document.getElementById('field'),
         context  = field.getContext('2d'),
         head,
@@ -20,7 +22,7 @@ var drawModule = (function() {
     };
 
     function clearAll() {
-        context.clearRect(0, 0, fieldWidth, fieldHeigth);
+        context.clearRect(0, 0, fieldWidth, fieldHeight);
     };
 
     function snakeDraw(snake) {
@@ -48,8 +50,8 @@ var drawModule = (function() {
         if (flag) { //food
             context.fillStyle = 'red';
             if ((x === undefined) || (y === undefined)) {
-                x = getRandomInt(0, 39);
-                y = getRandomInt(0, 29);
+                x = getRandomInt(0, width - 1);
+                y = getRandomInt(0, height - 1);
             }
             if (checkCoordinates(x, y)) {
                 foodCoord.x = x;
@@ -69,6 +71,9 @@ var drawModule = (function() {
 
 
     function draw() {
+        if (pause) {
+            return;
+        }
         clearAll();
         cellDraw(food, foodCoord.x, foodCoord.y);
         snakeDraw(snake);
@@ -86,6 +91,7 @@ var drawModule = (function() {
             case down:
                 head.y++;
                 break;
+
         }
 
 
@@ -105,7 +111,7 @@ var drawModule = (function() {
         head.x = snake[0].x;
         head.y = snake[0].y;
 
-        if ((head.x < 0)|| (head.x > 39) || (head.y < 0) || (head.y > 29) || (!checkCoordinates(head.x, head.y, true))) {
+        if ((head.x < 0)|| (head.x > width - 1) || (head.y < 0) || (head.y > height - 1) || (!checkCoordinates(head.x, head.y, true))) {
             loop = clearInterval(loop);
             startButton.classList.remove('hidden-btn');
         }
@@ -131,7 +137,7 @@ var drawModule = (function() {
         direction = right;
         foodCoord = {};
 
-        loop = setInterval(draw, 50);
+        loop = setInterval(draw, 100);
     };
 
 
