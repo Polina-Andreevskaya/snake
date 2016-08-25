@@ -6,8 +6,8 @@ var drawModule = (function() {
         fieldWidth = 640,
         fieldHeight = 480,
         cellSide = 16,
-        width = 40,
-        height = 30,
+        width = fieldWidth/cellSide,
+        height = fieldHeight/cellSide,
         field = document.getElementById('field'),
         context  = field.getContext('2d'),
         scoreEl = document.getElementById('score'),
@@ -18,6 +18,9 @@ var drawModule = (function() {
         foodCoord,
         loop,
         tail;
+
+    field.width = fieldWidth;
+    field.height = fieldHeight;
 
     function getRandomInt(min, max)
     {
