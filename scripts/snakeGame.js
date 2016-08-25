@@ -14,6 +14,13 @@
 
     });
 
+    document.body.onkeydown = function(event) {
+        event = event || window.event;
+        if (event.keyCode === UP || event.keyCode === DOWN || event.keyCode === LEFT || event.keyCode === RIGHT) {
+            return false;
+        }
+    };
+
     document.onkeydown = function(event) {
         code = event.keyCode;
         switch (code) {

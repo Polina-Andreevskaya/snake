@@ -10,6 +10,7 @@ var drawModule = (function() {
         height = 30,
         field = document.getElementById('field'),
         context  = field.getContext('2d'),
+        score = 0,
         head,
         snake,
         foodCoord,
@@ -95,10 +96,7 @@ var drawModule = (function() {
         }
 
 
-        if ((head.x === foodCoord.x) && (head.y === foodCoord.y)) {
-            cellDraw(food);
-        }
-        else {
+        if ((head.x !== foodCoord.x) || (head.y !== foodCoord.y)) {
             snake.pop();
         }
         tail = {
