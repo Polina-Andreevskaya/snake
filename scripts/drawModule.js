@@ -70,9 +70,9 @@ var drawModule = (function() {
         else { //snake
             context.fillStyle = 'yellow';
         }
-        context.fillRect(x * cellSide + 1, y * cellSide + 1, cellSide, cellSide);
+        context.fillRect(x * cellSide, y * cellSide, cellSide, cellSide);
         context.fillStyle = 'black';
-        context.strokeRect(x * cellSide + 1, y * cellSide + 1, cellSide, cellSide);
+        context.strokeRect(x * cellSide, y * cellSide, cellSide, cellSide);
     };
 
 
