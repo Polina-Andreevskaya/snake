@@ -11,6 +11,7 @@ var drawModule = (function() {
         field = document.getElementById('field'),
         context  = field.getContext('2d'),
         scoreEl = document.getElementById('score'),
+        scoreCont = document.getElementById('score-container'),
         score = 0,
         head,
         snake,
@@ -116,7 +117,7 @@ var drawModule = (function() {
 
         if ((head.x < 0)|| (head.x > width - 1) || (head.y < 0) || (head.y > height - 1) || (!checkCoordinates(head.x, head.y, true))) {
             loop = clearInterval(loop);
-            startButton.classList.remove('hidden-btn');
+            startButton.classList.remove('hidden');
         }
 
     };
@@ -139,6 +140,8 @@ var drawModule = (function() {
 
         direction = right;
         foodCoord = {};
+        score = 0;
+        scoreCont.classList.remove("hidden");
 
         loop = setInterval(draw, 100);
     };

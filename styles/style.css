@@ -16,6 +16,6 @@ html, body {
     margin: 20px;
 }
 
-.hidden-btn {
+.hidden {
     visibility: hidden;
 }

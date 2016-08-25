@@ -9,7 +9,7 @@
         code;
 
     startButton.addEventListener("click", function () {
-        startButton.classList.add('hidden-btn');
+        startButton.classList.add('hidden');
         drawModule.init();
 
     });
